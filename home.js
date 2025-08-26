@@ -104,7 +104,7 @@ document.getElementById("add-batton").addEventListener('click', function (e) {
         <div class="bg-white rounded-xl p-3 flex justify-between items-center mb-3">
             <div class="flex items-center gap-2">
                 <div class="p-3 rounded-full bg-[#f4f5f7]">
-                    <img src="./images/wallet1.png" alt="" class="mx-auto">
+                    <img src="./images/send1.png" alt="" class="mx-auto">
                 </div>
                 <div>
                     <h1>${data.name}</h1>
@@ -158,7 +158,7 @@ document.getElementById("add-transfer").addEventListener('click', function (e) {
         <div class="bg-white rounded-xl p-3 flex justify-between items-center mb-3">
             <div class="flex items-center gap-2">
                 <div class="p-3 rounded-full bg-[#f4f5f7]">
-                    <img src="./images/wallet1.png" alt="" class="mx-auto">
+                    <img src="./images/money1.png" alt="" class="mx-auto">
                 </div>
                 <div>
                     <h1>${data.name}</h1>
@@ -183,12 +183,36 @@ document.getElementById("add-bonus").addEventListener('click', function (e) {
     const total_ans = total + ans;
     document.getElementById("total-balance").innerText = total_ans;
 
+    // extra code
+
     const data = {
-        name: "add-bonus",
+        name: "Get Bonus",
+        amount: amount,
         date: new Date().toLocaleTimeString()
-    }
+    };
 
     save_data.push(data);
+
+    // also render immediately
+    const transactionPart = document.getElementById("transaction-part");
+    const div = document.createElement("div");
+    div.innerHTML = `
+        <div class="bg-white rounded-xl p-3 flex justify-between items-center mb-3">
+            <div class="flex items-center gap-2">
+                <div class="p-3 rounded-full bg-[#f4f5f7]">
+                    <img src="./images/bonus1.png" alt="" class="mx-auto">
+                </div>
+                <div>
+                    <h1>${data.name}</h1>
+                    <p>${data.amount} ৳ — ${data.date}</p>
+                </div>
+            </div>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+    `;
+    transactionPart.prepend(div);
+
+
 
 })
 
@@ -202,10 +226,10 @@ document.getElementById("add-btn-number").addEventListener('click', function (e)
     const amount = parseInt(document.getElementById("add-amount-price").value);
     const pin = parseInt(document.getElementById("add-pin-number").value);
 
-    if (account.length < 8) {
-        alert("Please Give Correct Account Number");
-        return;
-    }
+    // if (account.length < 8) {
+    //     alert("Please Give Correct Account Number");
+    //     return;
+    // }
 
     if (pin !== valid_pin) {
         alert("Please Give Correct PIN Number");
@@ -217,12 +241,34 @@ document.getElementById("add-btn-number").addEventListener('click', function (e)
 
     document.getElementById("total-balance").innerText = ans;
 
+    // extra code
+
     const data = {
-        name: "add-btn-number",
+        name: "Pay Bill",
+        amount: amount,
         date: new Date().toLocaleTimeString()
-    }
+    };
 
     save_data.push(data);
+
+    // also render immediately
+    const transactionPart = document.getElementById("transaction-part");
+    const div = document.createElement("div");
+    div.innerHTML = `
+        <div class="bg-white rounded-xl p-3 flex justify-between items-center mb-3">
+            <div class="flex items-center gap-2">
+                <div class="p-3 rounded-full bg-[#f4f5f7]">
+                    <img src="./images/purse1.png" alt="" class="mx-auto">
+                </div>
+                <div>
+                    <h1>${data.name}</h1>
+                    <p>${data.amount} ৳ — ${data.date}</p>
+                </div>
+            </div>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+    `;
+    transactionPart.prepend(div);
 })
 
 // transetion bill
